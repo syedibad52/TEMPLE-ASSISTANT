@@ -1,0 +1,296 @@
+{
+  "temple": {
+    "name": "Sri Raghavendra Swamy Temple",
+    "name_kn": "ಶ್ರೀ ರಾಘವೇಂದ್ರ ಸ್ವಾಮಿ ದೇವಸ್ಥಾನ",
+    "address": "Temple Road, Mantralayam, Kurnool District, Andhra Pradesh 518345",
+    "phone": "+91 9876543210",
+    "email": "info@sriraghavendraswamy.org",
+    "website": "https://sriraghavendraswamy.org",
+    "description": "Sri Raghavendra Swamy Temple is a sacred pilgrimage destination dedicated to Sri Guru Raghavendra Swamy. Devotees from all over the world visit this divine abode to seek blessings and spiritual solace.",
+    "description_kn": "ಶ್ರೀ ರಾಘವೇಂದ್ರ ಸ್ವಾಮಿ ದೇವಸ್ಥಾನವು ಶ್ರೀ ಗುರು ರಾಘವೇಂದ್ರ ಸ್ವಾಮಿಗಳಿಗೆ ಸಮರ್ಪಿತವಾದ ಪವಿತ್ರ ತೀರ್ಥಯಾತ್ರಾ ಸ್ಥಳವಾಗಿದೆ."
+  },
+  "timings": {
+    "opening_time": "05:00",
+    "closing_time": "21:00",
+    "morning_break_start": "12:30",
+    "morning_break_end": "16:00",
+    "darshan_timings": {
+      "general": {
+        "morning": "06:00 - 12:30",
+        "evening": "16:00 - 20:30"
+      },
+      "special": {
+        "morning": "05:30 - 06:00",
+        "evening": "20:30 - 21:00"
+      }
+    }
+  },
+  "pooja_schedules": [
+    {
+      "name": "Suprabhatam",
+      "name_kn": "ಸುಪ್ರಭಾತಂ",
+      "time": "05:00",
+      "end_time": "05:30",
+      "description": "Morning awakening prayer to the deity",
+      "description_kn": "ದೇವರ ಬೆಳಗಿನ ಜಾಗೃತಿ ಪ್ರಾರ್ಥನೆ",
+      "type": "daily"
+    },
+    {
+      "name": "Kakada Aarti",
+      "name_kn": "ಕಾಕಡ ಆರತಿ",
+      "time": "05:30",
+      "end_time": "06:00",
+      "description": "Early morning aarti ceremony",
+      "description_kn": "ಬೆಳಗಿನ ಆರತಿ ಸಮಾರಂಭ",
+      "type": "daily"
+    },
+    {
+      "name": "Abhishekam",
+      "name_kn": "ಅಭಿಷೇಕಂ",
+      "time": "06:00",
+      "end_time": "07:00",
+      "description": "Sacred bathing ritual of the deity with milk, curd, honey and water",
+      "description_kn": "ಹಾಲು, ಮೊಸರು, ಜೇನುತುಪ್ಪ ಮತ್ತು ನೀರಿನಿಂದ ದೇವರ ಪವಿತ್ರ ಸ್ನಾನ ವಿಧಿ",
+      "type": "daily"
+    },
+    {
+      "name": "Alankara Pooja",
+      "name_kn": "ಅಲಂಕಾರ ಪೂಜೆ",
+      "time": "07:00",
+      "end_time": "08:00",
+      "description": "Decoration and worship of the deity",
+      "description_kn": "ದೇವರ ಅಲಂಕಾರ ಮತ್ತು ಪೂಜೆ",
+      "type": "daily"
+    },
+    {
+      "name": "Maha Mangalaarti",
+      "name_kn": "ಮಹಾ ಮಂಗಳಾರತಿ",
+      "time": "08:00",
+      "end_time": "08:30",
+      "description": "Grand aarti ceremony with camphor and incense",
+      "description_kn": "ಕರ್ಪೂರ ಮತ್ತು ಧೂಪದಿಂದ ಮಹಾ ಆರತಿ ಸಮಾರಂಭ",
+      "type": "daily"
+    },
+    {
+      "name": "Naivedya (Morning)",
+      "name_kn": "ನೈವೇದ್ಯ (ಬೆಳಗ್ಗೆ)",
+      "time": "09:00",
+      "end_time": "09:30",
+      "description": "Morning food offering to the deity",
+      "description_kn": "ಬೆಳಗಿನ ಆಹಾರ ಅರ್ಪಣೆ",
+      "type": "daily"
+    },
+    {
+      "name": "Madhyahnika Pooja",
+      "name_kn": "ಮಧ್ಯಾಹ್ನಿಕ ಪೂಜೆ",
+      "time": "11:00",
+      "end_time": "12:00",
+      "description": "Midday worship ceremony",
+      "description_kn": "ಮಧ್ಯಾಹ್ನದ ಪೂಜಾ ಸಮಾರಂಭ",
+      "type": "daily"
+    },
+    {
+      "name": "Temple Closure (Afternoon)",
+      "name_kn": "ದೇವಸ್ಥಾನ ಮುಚ್ಚುವಿಕೆ (ಮಧ್ಯಾಹ್ನ)",
+      "time": "12:30",
+      "end_time": "16:00",
+      "description": "Temple closes for afternoon break",
+      "description_kn": "ಮಧ್ಯಾಹ್ನದ ವಿರಾಮಕ್ಕಾಗಿ ದೇವಸ್ಥಾನ ಮುಚ್ಚಲಾಗುತ್ತದೆ",
+      "type": "break"
+    },
+    {
+      "name": "Sandhya Pooja",
+      "name_kn": "ಸಂಧ್ಯಾ ಪೂಜೆ",
+      "time": "16:00",
+      "end_time": "17:00",
+      "description": "Evening prayer ceremony",
+      "description_kn": "ಸಂಜೆಯ ಪ್ರಾರ್ಥನಾ ಸಮಾರಂಭ",
+      "type": "daily"
+    },
+    {
+      "name": "Naivedya (Evening)",
+      "name_kn": "ನೈವೇದ್ಯ (ಸಂಜೆ)",
+      "time": "18:00",
+      "end_time": "18:30",
+      "description": "Evening food offering to the deity",
+      "description_kn": "ಸಂಜೆಯ ಆಹಾರ ಅರ್ಪಣೆ",
+      "type": "daily"
+    },
+    {
+      "name": "Ratri Pooja",
+      "name_kn": "ರಾತ್ರಿ ಪೂಜೆ",
+      "time": "19:00",
+      "end_time": "20:00",
+      "description": "Night worship ceremony",
+      "description_kn": "ರಾತ್ರಿ ಪೂಜಾ ಸಮಾರಂಭ",
+      "type": "daily"
+    },
+    {
+      "name": "Mangalaarti & Closure",
+      "name_kn": "ಮಂಗಳಾರತಿ ಮತ್ತು ಮುಚ್ಚುವಿಕೆ",
+      "time": "20:30",
+      "end_time": "21:00",
+      "description": "Final aarti and temple closing ceremony",
+      "description_kn": "ಅಂತಿಮ ಆರತಿ ಮತ್ತು ದೇವಸ್ಥಾನ ಮುಚ್ಚುವ ಸಮಾರಂಭ",
+      "type": "daily"
+    }
+  ],
+  "special_poojas": [
+    {
+      "name": "Satyanarayana Pooja",
+      "name_kn": "ಸತ್ಯನಾರಾಯಣ ಪೂಜೆ",
+      "day": "Purnima (Full Moon)",
+      "time": "10:00",
+      "description": "Special pooja performed on full moon days",
+      "description_kn": "ಹುಣ್ಣಿಮೆಯ ದಿನಗಳಲ್ಲಿ ವಿಶೇಷ ಪೂಜೆ"
+    },
+    {
+      "name": "Rudrabhishekam",
+      "name_kn": "ರುದ್ರಾಭಿಷೇಕಂ",
+      "day": "Monday",
+      "time": "06:30",
+      "description": "Special abhishekam performed every Monday",
+      "description_kn": "ಪ್ರತಿ ಸೋಮವಾರ ವಿಶೇಷ ಅಭಿಷೇಕ"
+    },
+    {
+      "name": "Lakshmi Pooja",
+      "name_kn": "ಲಕ್ಷ್ಮಿ ಪೂಜೆ",
+      "day": "Friday",
+      "time": "18:00",
+      "description": "Special Lakshmi worship every Friday evening",
+      "description_kn": "ಪ್ರತಿ ಶುಕ್ರವಾರ ಸಂಜೆ ವಿಶೇಷ ಲಕ್ಷ್ಮಿ ಪೂಜೆ"
+    }
+  ],
+  "festivals": [
+    {
+      "name": "Raghavendra Swamy Aradhana",
+      "name_kn": "ರಾಘವೇಂದ್ರ ಸ್ವಾಮಿ ಆರಾಧನಾ",
+      "date": "August 2026",
+      "duration": "3 days",
+      "description": "Annual aradhana festival celebrating Guru Raghavendra Swamy's Brindavana Pravesha",
+      "description_kn": "ಗುರು ರಾಘವೇಂದ್ರ ಸ್ವಾಮಿಗಳ ಬೃಂದಾವನ ಪ್ರವೇಶ ಆಚರಣೆಯ ವಾರ್ಷಿಕ ಆರಾಧನಾ ಉತ್ಸವ",
+      "is_upcoming": true
+    },
+    {
+      "name": "Deepavali",
+      "name_kn": "ದೀಪಾವಳಿ",
+      "date": "October 2026",
+      "duration": "2 days",
+      "description": "Festival of lights with special lamp ceremony",
+      "description_kn": "ವಿಶೇಷ ದೀಪ ಸಮಾರಂಭದೊಂದಿಗೆ ಬೆಳಕಿನ ಹಬ್ಬ",
+      "is_upcoming": true
+    },
+    {
+      "name": "Makara Sankranti",
+      "name_kn": "ಮಕರ ಸಂಕ್ರಾಂತಿ",
+      "date": "January 2027",
+      "duration": "1 day",
+      "description": "Harvest festival with special pongal offering",
+      "description_kn": "ವಿಶೇಷ ಪೊಂಗಲ್ ಅರ್ಪಣೆಯೊಂದಿಗೆ ಸುಗ್ಗಿಯ ಹಬ್ಬ",
+      "is_upcoming": true
+    },
+    {
+      "name": "Maha Shivaratri",
+      "name_kn": "ಮಹಾ ಶಿವರಾತ್ರಿ",
+      "date": "February 2027",
+      "duration": "1 day",
+      "description": "Night-long worship with special abhishekam",
+      "description_kn": "ವಿಶೇಷ ಅಭಿಷೇಕದೊಂದಿಗೆ ರಾತ್ರಿ ಪೂಜೆ",
+      "is_upcoming": true
+    },
+    {
+      "name": "Ugadi",
+      "name_kn": "ಯುಗಾದಿ",
+      "date": "March 2027",
+      "duration": "1 day",
+      "description": "Kannada New Year celebrations with special pooja",
+      "description_kn": "ವಿಶೇಷ ಪೂಜೆಯೊಂದಿಗೆ ಕನ್ನಡ ಹೊಸ ವರ್ಷದ ಆಚರಣೆ",
+      "is_upcoming": true
+    },
+    {
+      "name": "Sri Rama Navami",
+      "name_kn": "ಶ್ರೀ ರಾಮ ನವಮಿ",
+      "date": "April 2027",
+      "duration": "1 day",
+      "description": "Celebration of Lord Rama's birth with special abhishekam and pooja",
+      "description_kn": "ವಿಶೇಷ ಅಭಿಷೇಕ ಮತ್ತು ಪೂಜೆಯೊಂದಿಗೆ ಶ್ರೀ ರಾಮನ ಜನ್ಮ ಆಚರಣೆ",
+      "is_upcoming": true
+    }
+  ],
+  "prasada_timings": {
+    "morning": {
+      "time": "09:30 - 12:00",
+      "items": ["Puliyogare", "Kosambari", "Payasa"],
+      "items_kn": ["ಪುಳಿಯೋಗರೆ", "ಕೋಸಂಬರಿ", "ಪಾಯಸ"]
+    },
+    "evening": {
+      "time": "17:00 - 20:00",
+      "items": ["Huggi", "Sweet Pongal", "Laddu"],
+      "items_kn": ["ಹುಗ್ಗಿ", "ಸಿಹಿ ಪೊಂಗಲ್", "ಲಡ್ಡು"]
+    }
+  },
+  "donations": {
+    "categories": [
+      {
+        "name": "General Donation",
+        "name_kn": "ಸಾಮಾನ್ಯ ದಾನ",
+        "description": "Support temple maintenance and daily operations",
+        "min_amount": 100
+      },
+      {
+        "name": "Annadana (Food Offering)",
+        "name_kn": "ಅನ್ನದಾನ",
+        "description": "Sponsor meals for devotees",
+        "min_amount": 500
+      },
+      {
+        "name": "Special Pooja Sponsorship",
+        "name_kn": "ವಿಶೇಷ ಪೂಜಾ ಪ್ರಾಯೋಜಕತ್ವ",
+        "description": "Sponsor a special pooja ceremony",
+        "min_amount": 1001
+      },
+      {
+        "name": "Temple Development",
+        "name_kn": "ದೇವಸ್ಥಾನ ಅಭಿವೃದ್ಧಿ",
+        "description": "Contribute to temple renovation and expansion",
+        "min_amount": 5000
+      }
+    ],
+    "bank_details": {
+      "bank_name": "State Bank of India",
+      "account_name": "Sri Raghavendra Swamy Temple Trust",
+      "account_number": "XXXXXXXXXXXX",
+      "ifsc_code": "SBIN0XXXXXX",
+      "upi_id": "temple@sbi"
+    }
+  },
+  "parking": {
+    "available": true,
+    "capacity": 200,
+    "two_wheeler": "Free",
+    "four_wheeler": "₹20",
+    "bus": "₹50",
+    "note": "Parking is available near the temple entrance. Two-wheeler parking is free.",
+    "note_kn": "ದೇವಸ್ಥಾನದ ಪ್ರವೇಶ ದ್ವಾರದ ಬಳಿ ಪಾರ್ಕಿಂಗ್ ಲಭ್ಯವಿದೆ. ದ್ವಿಚಕ್ರ ವಾಹನ ಪಾರ್ಕಿಂಗ್ ಉಚಿತ."
+  },
+  "announcements": [
+    {
+      "title": "Special Aradhana Celebration",
+      "title_kn": "ವಿಶೇಷ ಆರಾಧನಾ ಆಚರಣೆ",
+      "message": "The annual Aradhana festival will be celebrated with great devotion. All devotees are welcome to participate.",
+      "message_kn": "ವಾರ್ಷಿಕ ಆರಾಧನಾ ಉತ್ಸವವನ್ನು ಭಕ್ತಿಯಿಂದ ಆಚರಿಸಲಾಗುವುದು. ಎಲ್ಲಾ ಭಕ್ತರು ಭಾಗವಹಿಸಲು ಸ್ವಾಗತ.",
+      "date": "2026-08-15",
+      "type": "festival",
+      "active": true
+    },
+    {
+      "title": "Free Prasada Distribution",
+      "title_kn": "ಉಚಿತ ಪ್ರಸಾದ ವಿತರಣೆ",
+      "message": "Free prasada will be distributed to all devotees during morning and evening sessions.",
+      "message_kn": "ಬೆಳಗ್ಗೆ ಮತ್ತು ಸಂಜೆ ಎಲ್ಲಾ ಭಕ್ತರಿಗೆ ಉಚಿತ ಪ್ರಸಾದ ವಿತರಣೆ.",
+      "date": "2026-06-01",
+      "type": "general",
+      "active": true
+    }
+  ]
+}
