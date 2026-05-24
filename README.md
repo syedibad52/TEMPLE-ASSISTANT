@@ -1,4 +1,4 @@
-# 🛕 TempleAI Voice Assistant
+# 🛕 Temple AI Voice Assistant
 
 An AI-powered temple guide website with bilingual voice support (English + Kannada). Devotees can speak to the AI assistant and receive voice replies about temple information, pooja timings, festivals, and more.
 
