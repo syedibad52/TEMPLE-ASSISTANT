@@ -14,7 +14,7 @@ from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
 from dotenv import load_dotenv
 
-from database.connection import connect_to_mongo, close_mongo_connection
+from database.connection import connect_to_db, close_db
 from routes.chat import router as chat_router
 from routes.speech import router as speech_router
 from routes.temple import router as temple_router
@@ -39,11 +39,11 @@ limiter = Limiter(key_func=get_remote_address)
 async def lifespan(app: FastAPI):
     """Startup and shutdown events."""
     logger.info("🛕 Starting TempleAI Backend...")
-    await connect_to_mongo()
+    await connect_to_db()
     logger.info("🛕 TempleAI Backend is ready!")
     yield
     logger.info("🛕 Shutting down TempleAI Backend...")
-    await close_mongo_connection()
+    await close_db()
 
 
 # ── Create FastAPI App ────────────────────────────────
@@ -106,7 +106,7 @@ async def api_health():
         "status": "healthy",
         "openai_configured": bool(os.getenv("OPENAI_API_KEY", "").strip() and not os.getenv("OPENAI_API_KEY", "").startswith("your_")),
         "elevenlabs_configured": bool(os.getenv("ELEVENLABS_API_KEY", "").strip() and not os.getenv("ELEVENLABS_API_KEY", "").startswith("your_")),
-        "mongodb_configured": bool(os.getenv("MONGODB_URI", "").strip() and not os.getenv("MONGODB_URI", "").startswith("mongodb+srv://username")),
+        "sql_configured": bool(os.getenv("DATABASE_URL", "").strip()),
     }
 
 

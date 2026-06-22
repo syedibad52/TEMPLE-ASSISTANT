@@ -1,14 +1,22 @@
-"""
-Database seed script — populates MongoDB with sample temple data.
+"""Database seed script — populates local SQLite with sample temple data.
 Run: python -m database.seed
 """
 import asyncio
 import json
 import logging
 from pathlib import Path
-from motor.motor_asyncio import AsyncIOMotorClient
 from dotenv import load_dotenv
 import os
+
+from database.connection import (
+    database,
+    temple_info,
+    pooja_schedules,
+    special_poojas,
+    festivals,
+    announcements,
+    meta,
+)
 
 load_dotenv()
 logging.basicConfig(level=logging.INFO)
@@ -16,57 +24,93 @@ logger = logging.getLogger(__name__)
 
 
 async def seed_database():
-    """Seed MongoDB with sample temple data."""
-    uri = os.getenv("MONGODB_URI", "")
-    if not uri or uri.startswith("mongodb+srv://username"):
-        logger.error("Please set a valid MONGODB_URI in your .env file")
-        return
-
-    # Load sample data
     data_path = Path(__file__).parent.parent / "data" / "sample_data.json"
     with open(data_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    # Connect to MongoDB
-    client = AsyncIOMotorClient(uri)
-    db = client.templeai
-
+    await database.connect()
     try:
-        # Seed temple info
-        await db.templeInfo.delete_many({})
-        await db.templeInfo.insert_one(data["temple"])
-        logger.info("✅ Seeded templeInfo")
+        # Clear tables
+        await database.execute(temple_info.delete())
+        await database.execute(pooja_schedules.delete())
+        await database.execute(special_poojas.delete())
+        await database.execute(festivals.delete())
+        await database.execute(announcements.delete())
+        await database.execute(meta.delete())
 
-        # Seed pooja schedules
-        await db.poojaSchedules.delete_many({})
-        if data.get("pooja_schedules"):
-            await db.poojaSchedules.insert_many(data["pooja_schedules"])
-        logger.info(f"✅ Seeded {len(data.get('pooja_schedules', []))} pooja schedules")
+        # Insert temple info (single row)
+        await database.execute(
+            temple_info.insert().values(id=1, data=data.get("temple", {}))
+        )
 
-        # Seed special poojas
-        await db.specialPoojas.delete_many({})
-        if data.get("special_poojas"):
-            await db.specialPoojas.insert_many(data["special_poojas"])
-        logger.info(f"✅ Seeded {len(data.get('special_poojas', []))} special poojas")
+        # Insert pooja schedules
+        for p in data.get("pooja_schedules", []):
+            await database.execute(
+                pooja_schedules.insert().values(
+                    name=p.get("name"),
+                    name_kn=p.get("name_kn"),
+                    time=p.get("time"),
+                    end_time=p.get("end_time"),
+                    description=p.get("description"),
+                    description_kn=p.get("description_kn"),
+                    type=p.get("type"),
+                )
+            )
 
-        # Seed festivals
-        await db.festivals.delete_many({})
-        if data.get("festivals"):
-            await db.festivals.insert_many(data["festivals"])
-        logger.info(f"✅ Seeded {len(data.get('festivals', []))} festivals")
+        # Insert special poojas
+        for s in data.get("special_poojas", []):
+            await database.execute(
+                special_poojas.insert().values(
+                    name=s.get("name"),
+                    name_kn=s.get("name_kn"),
+                    day=s.get("day"),
+                    time=s.get("time"),
+                    description=s.get("description"),
+                    description_kn=s.get("description_kn"),
+                )
+            )
 
-        # Seed announcements
-        await db.announcements.delete_many({})
-        if data.get("announcements"):
-            await db.announcements.insert_many(data["announcements"])
-        logger.info(f"✅ Seeded {len(data.get('announcements', []))} announcements")
+        # Insert festivals
+        for f in data.get("festivals", []):
+            await database.execute(
+                festivals.insert().values(
+                    name=f.get("name"),
+                    name_kn=f.get("name_kn"),
+                    date=f.get("date"),
+                    duration=f.get("duration"),
+                    description=f.get("description"),
+                    description_kn=f.get("description_kn"),
+                    is_upcoming=f.get("is_upcoming", True),
+                )
+            )
+
+        # Insert announcements
+        for a in data.get("announcements", []):
+            await database.execute(
+                announcements.insert().values(
+                    title=a.get("title"),
+                    title_kn=a.get("title_kn"),
+                    message=a.get("message"),
+                    message_kn=a.get("message_kn"),
+                    date=a.get("date"),
+                    type=a.get("type"),
+                    active=a.get("active", True),
+                )
+            )
+
+        # Insert meta JSON blobs (donations, parking, prasada_timings, timings)
+        for key in ("donations", "parking", "prasada_timings", "timings"):
+            if key in data:
+                await database.execute(
+                    meta.insert().values(key=key, value=data.get(key))
+                )
 
         logger.info("🛕 Database seeding complete!")
 
     except Exception as e:
         logger.error(f"Seeding failed: {e}")
     finally:
-        client.close()
+        await database.disconnect()
 
 
 if __name__ == "__main__":

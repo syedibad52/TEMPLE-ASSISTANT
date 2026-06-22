@@ -11,9 +11,15 @@ load_dotenv()
 logger = logging.getLogger(__name__)
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
+OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL", None)
 TEMPLE_NAME = os.getenv("TEMPLE_NAME", "Sri Raghavendra Swamy Temple")
 
-client = AsyncOpenAI(api_key=OPENAI_API_KEY) if OPENAI_API_KEY and not OPENAI_API_KEY.startswith("your_") else None
+# Build client kwargs — include base_url only if set (for Groq, etc.)
+_client_kwargs = {"api_key": OPENAI_API_KEY}
+if OPENAI_BASE_URL:
+    _client_kwargs["base_url"] = OPENAI_BASE_URL
+
+client = AsyncOpenAI(**_client_kwargs) if OPENAI_API_KEY and not OPENAI_API_KEY.startswith("your_") else None
 
 SYSTEM_PROMPT_TEMPLATE = """You are a respectful AI Temple Assistant for {temple_name}.
 
@@ -84,9 +90,10 @@ async def generate_chat_response(
         else:
             messages.append({"role": "user", "content": message})
 
-        # Call GPT
+        # Call GPT (or Groq if configured)
+        model_name = os.getenv("AI_MODEL", "gpt-4o-mini")
         response = await client.chat.completions.create(
-            model="gpt-4o-mini",
+            model=model_name,
             messages=messages,
             temperature=0.7,
             max_tokens=500,

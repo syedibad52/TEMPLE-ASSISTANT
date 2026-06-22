@@ -1,13 +1,20 @@
-"""
-Temple data service — fetches temple information from MongoDB or falls back to sample JSON.
+"""Temple data service — fetches temple information from the SQL database or falls back to sample JSON.
 Computes live temple status based on current time.
 """
 import json
-import os
 import logging
 from datetime import datetime, time
 from pathlib import Path
-from database.connection import get_database
+from database.connection import (
+    get_database,
+    temple_info,
+    pooja_schedules,
+    special_poojas,
+    festivals,
+    announcements,
+    meta,
+)
+import sqlalchemy
 
 logger = logging.getLogger(__name__)
 
@@ -34,9 +41,10 @@ async def get_temple_info() -> dict:
     db = get_database()
     if db:
         try:
-            info = await db.templeInfo.find_one({}, {"_id": 0})
-            if info:
-                return info
+            query = sqlalchemy.select(temple_info).limit(1)
+            row = await db.fetch_one(query)
+            if row and row.get("data"):
+                return row.get("data")
         except Exception as e:
             logger.warning(f"DB fetch failed for temple info: {e}")
     data = _load_sample_data()
@@ -48,10 +56,10 @@ async def get_pooja_schedules() -> list:
     db = get_database()
     if db:
         try:
-            cursor = db.poojaSchedules.find({}, {"_id": 0}).sort("time", 1)
-            schedules = await cursor.to_list(length=50)
-            if schedules:
-                return schedules
+            query = sqlalchemy.select(pooja_schedules).order_by(pooja_schedules.c.time)
+            rows = await db.fetch_all(query)
+            if rows:
+                return [dict(r) for r in rows]
         except Exception as e:
             logger.warning(f"DB fetch failed for pooja schedules: {e}")
     data = _load_sample_data()
@@ -63,10 +71,10 @@ async def get_special_poojas() -> list:
     db = get_database()
     if db:
         try:
-            cursor = db.specialPoojas.find({}, {"_id": 0})
-            poojas = await cursor.to_list(length=50)
-            if poojas:
-                return poojas
+            query = sqlalchemy.select(special_poojas)
+            rows = await db.fetch_all(query)
+            if rows:
+                return [dict(r) for r in rows]
         except Exception as e:
             logger.warning(f"DB fetch failed for special poojas: {e}")
     data = _load_sample_data()
@@ -78,10 +86,10 @@ async def get_festivals() -> list:
     db = get_database()
     if db:
         try:
-            cursor = db.festivals.find({"is_upcoming": True}, {"_id": 0})
-            festivals = await cursor.to_list(length=50)
-            if festivals:
-                return festivals
+            query = sqlalchemy.select(festivals).where(festivals.c.is_upcoming == True)
+            rows = await db.fetch_all(query)
+            if rows:
+                return [dict(r) for r in rows]
         except Exception as e:
             logger.warning(f"DB fetch failed for festivals: {e}")
     data = _load_sample_data()
@@ -93,10 +101,10 @@ async def get_announcements() -> list:
     db = get_database()
     if db:
         try:
-            cursor = db.announcements.find({"active": True}, {"_id": 0})
-            announcements = await cursor.to_list(length=50)
-            if announcements:
-                return announcements
+            query = sqlalchemy.select(announcements).where(announcements.c.active == True)
+            rows = await db.fetch_all(query)
+            if rows:
+                return [dict(r) for r in rows]
         except Exception as e:
             logger.warning(f"DB fetch failed for announcements: {e}")
     data = _load_sample_data()
@@ -105,18 +113,45 @@ async def get_announcements() -> list:
 
 async def get_donations_info() -> dict:
     """Get donation categories and bank details."""
+    db = get_database()
+    if db:
+        try:
+            query = sqlalchemy.select(meta).where(meta.c.key == "donations")
+            row = await db.fetch_one(query)
+            if row and row.get("value"):
+                return row.get("value")
+        except Exception as e:
+            logger.warning(f"DB fetch failed for donations: {e}")
     data = _load_sample_data()
     return data.get("donations", {})
 
 
 async def get_parking_info() -> dict:
     """Get parking availability info."""
+    db = get_database()
+    if db:
+        try:
+            query = sqlalchemy.select(meta).where(meta.c.key == "parking")
+            row = await db.fetch_one(query)
+            if row and row.get("value"):
+                return row.get("value")
+        except Exception as e:
+            logger.warning(f"DB fetch failed for parking: {e}")
     data = _load_sample_data()
     return data.get("parking", {})
 
 
 async def get_prasada_timings() -> dict:
     """Get prasada distribution timings."""
+    db = get_database()
+    if db:
+        try:
+            query = sqlalchemy.select(meta).where(meta.c.key == "prasada_timings")
+            row = await db.fetch_one(query)
+            if row and row.get("value"):
+                return row.get("value")
+        except Exception as e:
+            logger.warning(f"DB fetch failed for prasada timings: {e}")
     data = _load_sample_data()
     return data.get("prasada_timings", {})
 

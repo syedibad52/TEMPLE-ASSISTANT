@@ -7,6 +7,9 @@
 
 @import "tailwindcss";
 
+/* Enable class-based dark mode for Tailwind v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* --- CSS Custom Properties --- */
 :root {
   --font-heading: 'Outfit', sans-serif;
